@@ -4,9 +4,9 @@ const env = process.env
 const isProd = env.MODE == 'prod'
 const mockServer =
   'https://easy-mock.com/mock/5c1b3895fe5907404e654045/femessage-mock'
-
+const edtMockServer = 'https://easy-mock.com/mock/5ca367a5c98be737b0af81a3'
 // 不能以斜杠结尾
-let apiServer = process.env.API_SERVER
+let apiServer = process.env.API_SERVER || mockServer
 // 必须以斜杠结尾
 let publicPath = process.env.PUBLIC_PATH
 
@@ -15,11 +15,13 @@ const config = {
   env: {
     mock: {
       '/deepexi-tenant': mockServer,
-      '/deepexi-permission': mockServer
+      '/deepexi-permission': mockServer,
+      '/edt-mock': edtMockServer
     },
     dev: {
       '/deepexi-tenant': apiServer,
-      '/deepexi-permission': apiServer
+      '/deepexi-permission': apiServer,
+      '/edt-mock': edtMockServer
     }
   }
 }
